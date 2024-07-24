@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Magentoyan_Base::parent"  title="Magentoyan" module="Magentoyan_Base" sortOrder="10" resource="Magentoyan_Base::parent"/>
+    
+        <add id="Magentoyan_Base::settings" title="Settings" module="Magentoyan_Base" sortOrder="1000" resource="Magentoyan_Base::settings" parent="Magentoyan_Base::parent"/>
+
+    
+    </menu>
+</config>

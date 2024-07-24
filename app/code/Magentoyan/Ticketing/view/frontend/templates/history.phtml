@@ -1,0 +1,50 @@
+<button onclick="window.location.href = '<?= $block->newTicketUrl() ?>'" class="action primary">
+    <span><?= __('Request New Ticker') ?></span>
+</button>
+
+
+<?php $_tickets = $block->getTickets(); ?>
+
+<?php if ($_tickets && count($_tickets)) : ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-tickets-table">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Tickets')) ?></caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('ID #')) ?></th>
+                    <th scope="col" class="col date"><?= $block->escapeHtml(__('Date')) ?></th>
+
+                    <th scope="col" class="col total"><?= $block->escapeHtml(__('Title')) ?></th>
+                    
+                    <th scope="col" class="col total"><?= $block->escapeHtml(__('Status')) ?></th>
+                    
+                    <th scope="col" class="col total"></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($_tickets as $_ticket) : ?>
+                    <tr>
+                        <td data-th="<?= $block->escapeHtml(__('ID #')) ?>" class="col id"><?= $block->escapeHtml($_ticket->getId()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Date')) ?>" class="col date"><?= /* @noEscape */ $block->formatDate($_ticket->getCreatedAt()) ?></td>
+
+                        <td data-th="<?= $block->escapeHtml(__('Title')) ?>" class="col title"><?= /* @noEscape */ $_ticket->getTitle() ?></td>
+
+                        <td  class="col title"><?php 
+                        $theStatus = $block->getStatusOptions($_ticket->getStatus());
+                        
+                         echo __($theStatus['label']);
+                        ?></td>
+                        
+                        <td  class="col title"><a href="<?= $block->getUrl('ticketing/index/reply', ['ticket_id' => $_ticket->getId()])?>"><?= __('View') ?></a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()) : ?>
+        <div class="order-products-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+<?php else : ?>
+    <div class="message info empty"><span><?= $block->escapeHtml($block->getEmptyOrdersMessage()) ?></span></div>
+<?php endif ?>

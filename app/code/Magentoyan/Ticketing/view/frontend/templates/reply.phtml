@@ -1,0 +1,96 @@
+
+<a href="<?= $block->escapeUrl($block->getUrl('ticketing/index/history')) ?>"><?= __('Return') ?></a>
+
+<div class="row">
+
+    <div class="col-md">
+        <div class="block block-customer-login">
+
+            <div class="block-content" aria-labelledby="block-customer-login-heading">
+                <form class="form form-login"
+                      
+                      action=""
+                      method="post"
+                      id="reply-ticket-form"
+                      data-mage-init='{"validation":{}}'>
+                          <?= $block->getBlockHtml('formkey') ?>
+                    <fieldset class="fieldset login" data-hasrequired="<?= $block->escapeHtml(__('* Required Fields')) ?>">
+
+                        <div class="field  required">
+                            <label class="label" for="reply_message"><span><?= $block->escapeHtml(__('Reply')) ?></span></label>
+                            <div class="control">
+                                <textarea name="ticket[reply_message]" type="text" 
+
+                                          id="reply_message"  class=""
+                                          title="<?= $block->escapeHtmlAttr(__('Reply')) ?>"
+
+                                          data-validate="{required:true}" rows="5"
+                                          cols="25"></textarea>
+                            </div>
+                        </div>
+
+                        
+
+
+                        <div class="actions-toolbar">
+                            <div class="primary"><button type="submit" class="action login primary" name="send" id="send2" <?php if (false): ?> disabled="disabled" <?php endif; ?>><span><?= $block->escapeHtml(__('Send')) ?></span></button></div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md">
+        <?php
+        $collection = $block->getHistoryCollection($block->getTicketId());
+        ?>
+
+        <ul id="frontend-tracking-history">
+            <?php foreach ($collection as $row): ?>
+
+                <li>
+                    <div class="frontend-col-ticket">
+                        <section class="frontend-ticket-written-by">
+                            <?php if ($row->getData('written_by') == 'customer'): ?>
+                                <span><?php echo $row->getData('firstname') . ' ' . $row->getData('lastname'); ?></span>
+                            <?php else: ?>
+                                <span><?= __('Admin') ?></span>
+                            <?php endif; ?>
+                        </section>
+                        <?php if (!empty($row->getData('title'))): ?>
+                            <span class="frontend-ticket-title"><?= $row->getData('title') ?></span>
+                        <?php endif; ?>
+                        <section class="frontend-ticket-message"><?= $row->getData('message') ?></section>
+
+                        <section class="frontend-ticket-datetime">
+                            <?php
+                            $createdAt = $block->formatDate(
+                                    $row->getData('created_at'),
+                                    \IntlDateFormatter::MEDIUM,
+                                    true
+                            );
+
+                            $dateArr = explode(' ', $row->getData('created_at'));
+
+                            echo $block->escapeHtml($createdAt) . ' ' . $dateArr[1];
+                            ?>
+                        </section>
+
+                        <?php if (!empty($row->getData('image_upload'))): ?>
+                            <section class="frontend-ticket-link">
+                                <a href="<?= $row->getData('image_upload') ?>" target="_blank" ><?= __('Link') ?></a>
+                            </section>
+                        <?php endif; ?>
+
+                    </div>
+                </li>
+
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+
+
+</div>

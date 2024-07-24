@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/** Grid menu xml
+ * @category  Magentoyan
+ * @package   Magentoyan_Ticketing
+ * @author    Magentoyan
+ * @copyright Copyright (c) 2010-2017 Magentoyan Software Private Limited (https://magentoyan.com)
+ * @license   https://store.magentoyan.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+       <add id="Magentoyan_Ticketing::grid" title="Ticketing" module="Magentoyan_Ticketing" sortOrder="47" parent="Magentoyan_Base::parent" action="ticketing/grid" resource="Magentoyan_Ticketing::grid"/>
+    </menu>
+</config>

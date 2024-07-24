@@ -1,0 +1,44 @@
+<?php
+$collection = $block->getHistoryCollection($block->getThisModel()->getId());
+?>
+
+<ul id="admin-tracking-history">
+    <?php foreach ($collection as $row): ?>
+
+        <li>
+            <div class="admin-col-ticket">
+                <section class="admin-ticket-written-by">
+                    <?php if ($row->getData('written_by') == 'customer'): ?>
+                        <span><?php echo $row->getData('firstname') . ' ' . $row->getData('lastname'); ?></span>
+                    <?php else: ?>
+                        <span><?= $row->getData('written_by') ?></span>
+                    <?php endif; ?>
+                </section>
+                <?php if (!empty($row->getData('title'))): ?>
+                    <span class="admin-ticket-title"><?= $row->getData('title') ?></span>
+                <?php endif; ?>
+                <section class="admin-ticket-message"><?= $row->getData('message') ?></section>
+
+                <section class="admin-ticket-datetime">
+                    <?php
+                    $createdAt = $block->formatDate(
+                            $row->getData('created_at'),
+                            \IntlDateFormatter::MEDIUM,
+                            true
+                    );
+
+                    echo $block->escapeHtml($createdAt);
+                    ?>
+                </section>
+
+                <?php if (!empty($row->getData('image_upload'))): ?>
+                    <section class="admin-ticket-link">
+                        <a href="<?= $row->getData('image_upload') ?>" target="_blank" ><?= __('Link') ?></a>
+                    </section>
+                <?php endif; ?>
+
+            </div>
+        </li>
+
+    <?php endforeach; ?>
+</ul>

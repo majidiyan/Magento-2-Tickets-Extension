@@ -1,0 +1,80 @@
+<?php
+$customerId = $block->getCustomerId();
+?>
+<div class="block block-customer-login">
+
+    <div class="block-content" aria-labelledby="block-customer-login-heading">
+        <form class="form form-login"
+              enctype="multipart/form-data"
+              action="<?= $block->escapeUrl($block->saveTicketUrl()) ?>"
+              method="post"
+              id="new-ticket-form"
+              data-mage-init='{"validation":{}}'>
+                  <?= $block->getBlockHtml('formkey') ?>
+            <fieldset class="fieldset login" data-hasrequired="<?= $block->escapeHtml(__('* Required Fields')) ?>">
+                
+                <div class="field  required">
+                    <label class="label" for="title"><span><?= $block->escapeHtml(__('Title')) ?></span></label>
+                    <div class="control">
+                        <input name="ticket[title]" type="text" 
+
+                               id="title"  class="input-text"
+                               title="<?= $block->escapeHtmlAttr(__('Title')) ?>"
+                               
+                               data-validate="{required:true}">
+                    </div>
+                </div>
+                
+                <div class="field  required">
+                    <label class="label" for="order_id"><span><?= $block->escapeHtml(__('Order')) ?></span></label>
+                    <div class="control">
+                        <select name="ticket[order_id]"  
+
+                               id="order_id"  class="validate-select"
+                               
+                               
+                            data-validate="{required:true}">
+                                   
+                            <option value=""><?= $escaper->escapeHtml(__('Select Order')) ?></option>
+                            
+                            <?php foreach($block->getCustomerOrdersIds($customerId) as $orderId => $orderIncrementId): ?>
+                            <option value="<?= $orderId ?>"><?= $orderIncrementId ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                
+                
+                <div class="field  required">
+                    <label class="label" for="message"><span><?= $block->escapeHtml(__('Message')) ?></span></label>
+                    <div class="control">
+                        <textarea name="ticket[message]" type="text" 
+
+                               id="message"  class=""
+                               title="<?= $block->escapeHtmlAttr(__('Message')) ?>"
+                               
+                               data-validate="{required:true}" rows="5"
+                      cols="25"></textarea>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <label class="label" for="image_upload"><span><?= $block->escapeHtml(__('Image')) ?></span></label>
+                    <div class="control">
+                        <input name="ticket[image_upload]" type="file" 
+
+                               id="image_upload"  class="input-text"
+                               title="<?= $block->escapeHtmlAttr(__('Image')) ?>"
+                               >
+                    </div>
+                </div>
+                
+
+                <div class="actions-toolbar">
+                    <div class="primary"><button type="submit" class="action login primary" name="send" id="send2" <?php if (false): ?> disabled="disabled" <?php endif; ?>><span><?= $block->escapeHtml(__('Send')) ?></span></button></div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</div>

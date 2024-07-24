@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+	
+    
+<!--    admin grid-->
+    
+    <preference for="Magentoyan\Ticketing\Api\Data\GridInterface" type="Magentoyan\Ticketing\Model\Grid" />
+
+    <type name="Magentoyan\Ticketing\Model\ResourceModel\Grid\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magentoyan_ticketing</argument>
+            <argument name="resourceModel" xsi:type="string">Magentoyan\Ticketing\Model\ResourceModel\Grid</argument>
+        </arguments>
+    </type>
+    
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dataticketing" xsi:type="string">Magentoyan\Ticketing\Model\ResourceModel\Grid\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    
+<!--    admin grid end-->
+    
+</config>

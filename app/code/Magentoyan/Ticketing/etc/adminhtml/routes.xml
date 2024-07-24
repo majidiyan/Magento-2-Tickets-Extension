@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/** Grid adminhtml routes xml
+ * @category  Magentoyan
+ * @package   Magentoyan_Ticketing
+ * @author    Magentoyan
+ * @copyright Copyright (c) 2010-2016 Magentoyan Software Private Limited (https://magentoyan.com)
+ * @license   https://store.magentoyan.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="ticketing" frontName="ticketing">
+            <module name="Magentoyan_Ticketing" />
+        </route>
+    </router>
+</config>

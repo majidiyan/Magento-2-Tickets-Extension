@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Grid record list UI Component
+ * @category  Magentoyan
+ * @package   Magentoyan_Ticketing
+ * @author    Magentoyan
+ * @copyright Copyright (c) 2010-2017 Magentoyan Software Private Limited (https://magentoyan.com)
+ * @license   https://store.magentoyan.com/license.html
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">listalltickets.dataticketing</item>
+            <item name="deps" xsi:type="string">listalltickets.dataticketing</item>
+        </item>
+        <item name="spinner" xsi:type="string">grid_records_columns</item>
+
+    </argument>
+    <dataSource name="dataticketing">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">dataticketing</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">entity_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+                <item name="stickyTmpl" xsi:type="string">ui/grid/sticky/toolbar</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsProvider" xsi:type="string">listalltickets.listalltickets.grid_records_columns</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">listalltickets.listalltickets.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.filters</item>
+                    </item>
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                    <item name="childDefaults" xsi:type="array">
+                        <item name="provider" xsi:type="string">listalltickets.listalltickets.listing_top.listing_filters</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="visible" xsi:type="string">listalltickets.listalltickets.grid_records_columns.${ $.index }:visible</item>
+                        </item>
+                    </item>
+                </item>
+                <item name="observers" xsi:type="array">
+                    <item name="column" xsi:type="string">column</item>
+                </item>
+            </argument>
+        </filters>
+        
+        <paging name="listing_paging">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">listalltickets.listalltickets.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.paging</item>
+                    </item>
+                    <item name="selectProvider" xsi:type="string">listalltickets.listalltickets.grid_records_columns.ids</item>
+                </item>
+            </argument>
+        </paging>
+    </container>
+    <columns name="grid_records_columns">
+        
+       
+       
+        <!--       majidian-->
+        
+        <column name="entity_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Ticket Id</item>
+                    <item name="sortOrder" xsi:type="number">5</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="increment_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Order Id</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Title</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </column>
+       
+       <column name="firstname">
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">text</item>
+                   <item name="label" xsi:type="string" translate="true">First Name</item>
+                   <item name="sortOrder" xsi:type="number">30</item>
+               </item>
+           </argument>
+       </column>
+       
+       <column name="lastname">
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">text</item>
+                   <item name="label" xsi:type="string" translate="true">Last Name</item>
+                   <item name="sortOrder" xsi:type="number">40</item>
+               </item>
+           </argument>
+       </column>
+       
+       <column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="45">
+           <settings>
+                <options class="Magentoyan\Ticketing\Model\Source\StatusOptions"/>
+                <filter>select</filter>               
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+       </column>
+       
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">dateRange</item>
+                   <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                   <item name="dataType" xsi:type="string">date</item>
+                   <item name="label" xsi:type="string" translate="true">Time Create</item>
+                   <item name="sortOrder" xsi:type="number">50</item>
+               </item>
+           </argument>
+       </column>
+       
+
+        <!--       majidian end-->
+       
+       
+      
+       
+        <actionsColumn name="actions" class="Magentoyan\Ticketing\Ui\Component\Listing\Grid\Column\Action">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">107</item>
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>

@@ -1,0 +1,17 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">        
+    
+    <head>
+        <css src="Magentoyan_Ticketing::css/style.css"/>
+    </head>
+    
+    <body>
+
+        
+        <referenceBlock name="content">
+            <block class="Magentoyan\Ticketing\Block\Main" 
+                   name="magentoyan.ticketing.reply" 
+                   template="reply.phtml" 
+                   cacheable="false" />
+        </referenceBlock>
+    </body>
+</page>  

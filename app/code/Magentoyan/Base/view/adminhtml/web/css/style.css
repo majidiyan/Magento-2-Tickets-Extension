@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'magentoyan';
+    src: url('../fonts/magentoyan-Regular.ttf') format('truetype');
+;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: IranYekan;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/IRANYekanWebRegular.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('../fonts/IRANYekanWebRegular.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('../fonts/IRANYekanWebRegular.ttf') format('truetype');
+;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: IranYekan;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/IRANYekanWebBold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('../fonts/IRANYekanWebBold.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('../fonts/IRANYekanWebBold.ttf') format('truetype');
+;
+    font-display: swap;
+}
+
+body {
+    font-size: 12px !important;
+}
+
+.data-grid, .data-grid th, .data-grid td {
+    font-size: 1.2rem !important;
+}
+
+.page-wrapper, .menu-wrapper {
+    font-family: IranYekan, Tahoma, sans-serif;
+}
+
+.admin__menu #menu-magentoyan-base-parent.level-0 > a::before {
+    content: 'A' !important;
+    font-family: 'magentoyan' !important;
+    font-size: 3.2rem !important;
+}
+
+
+.magentoyan-tab > ._collapsible {
+    padding-left: 3em
+}
+
+.magentoyan-tab > ._collapsible::before {
+    content: 'A' !important;
+    font-family: 'magentoyan' !important;
+    font-size: 3.2rem !important;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+@media screen and (min-width: 993px) {
+    .checkout-index-index .modal-popup .form-shipping-address {
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .checkout-index-index .modal-popup .modal-inner-wrap {
+        margin-left: auto !important;
+    }
+}
+
+.modals-wrapper .modal-popup._inner-scroll .modal-inner-wrap {
+    width: 90% !important;
+}

@@ -1,0 +1,52 @@
+#my-tickets-table thead th{
+    text-align: right;
+}
+
+#my-tickets-table tbody td{
+    text-align: right;
+}
+
+
+#frontend-tracking-history{
+    
+    height: auto;
+    max-height: 50em;
+    overflow: scroll;
+    padding-left: 1em;
+    direction: rtl;
+    list-style: none;
+}
+
+#frontend-tracking-history>li{
+    margin-bottom: .7em;
+    border: gray thin solid;
+    border-radius: 5px;
+    padding: .5em;
+    text-align: right;
+    direction: rtl;
+    
+    overflow-wrap: break-word;
+}
+
+.frontend-ticket-title{
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.frontend-ticket-message{
+    margin: 1em 0;
+    background-color: #ddd;
+    padding: .5em;
+}
+
+.frontend-ticket-datetime{
+    background-color: brown;
+    color: white;
+    padding: 5px;
+    text-align: left;
+    direction: ltr;
+}
+
+.frontend-ticket-link{
+    text-align: center;
+    padding-top: 7px;
+}
